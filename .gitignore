@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Office temp files
+~$*.docx
+~$*.xlsx
+
+# CAD backups
+*.SLDPRT.bak
+*.SLDASM.bak
+*.bak
+*.asm.*
+*.prt.*
+
+# Large binaries - keep STLs but not gcode
+*.gcode
+*.3mf
+
+# Editor
+.vscode/
+.idea/
