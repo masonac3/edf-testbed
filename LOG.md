@@ -31,24 +31,20 @@ Notes / next:
 
 ---
 
-## 2026-09-XX
+## 2026-09-09
 
 Config: n/a
 Ambient: n/a
 
 Intent:
-- Set up repo, order Wave 1 hardware.
+- Set up repo
 
 Did:
 - Repo initialised.
-- Ordered: <fill in>
 
 Observed:
 - n/a
 
 Notes / next:
-- Predict static thrust, mass flow and exhaust velocity from the Schubeler
-  published specs BEFORE any measurement, and record them here dated. Knowing
-  the prediction in advance is what makes a surprising measurement
-  interpretable.
-- Talk to Liquid Rocketry about test space. Longest lead item.
+- Tomorrow I would like to order all my parts and then do some CAD for what my test stand will look like.
+- I will use the budgeting document and fill in/correct any prices that may differ from the sheet to real life. I think what is more important than manually correcting the prices is to just have what I actually spent written down. Goodnight 09/09 Mason
