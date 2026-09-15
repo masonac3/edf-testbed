@@ -68,3 +68,21 @@ Observed:
 
 Notes / next:
 - Tomorrow when I'm free I would like to begin the CAD and watch videos to be better informed for the phases coming up. For CAD specifically start the Thrust stand hopefully finish by Saturday if possible as thats when alot of parts come. This will also include how I want the thurst stand to be designed, quick drawing on ipad first then create the cad.
+
+## 2026-09-14
+
+Config: n/a
+Ambient: n/a
+
+Intent: 
+- Mark down on purchase tracker what arrived in the mail. Some things are still not here, and I'm a little unsure how to proceed (wait till trainer gets here or start something now). For now, I will just mark down on the tracker and ask claude for something to do.
+
+Did:
+- Marked down items that were received yesterday and today. Spoke to claude about things to do, want to work on some CAD or study components but dont have much time today.
+- 
+
+Observed:
+- n/a
+
+Notes / next:
+- Today was a small day, I would like to watch more informational videos to get a better understanding of this project. I also want to work on the CAD like I spoke about earlier, as I didn't have much time today.
