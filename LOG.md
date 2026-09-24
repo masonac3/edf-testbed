@@ -86,3 +86,21 @@ Observed:
 
 Notes / next:
 - Today was a small day, I would like to watch more informational videos to get a better understanding of this project. I also want to work on the CAD like I spoke about earlier, as I didn't have much time today.
+
+## 2026-09-24
+
+Config: n/a
+Ambient: n/a
+
+Intent:
+- Watch PF-1 from LearnNX to study necessary tools for making CAD with variations. Begin test stand CAD. Some more packages arrived so look at everything that has come and verify with purchase tracker.
+
+Did:
+- what actually happened
+- raw files written: data/raw/...
+
+Observed:
+- numbers, anomalies, things that looked wrong
+
+Notes / next:
+- open questions, what to try next time
