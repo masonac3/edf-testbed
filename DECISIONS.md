@@ -4,7 +4,7 @@ Running record of what has been decided and why. Append as you go; never silentl
 edit a past decision — supersede it with a new dated entry so the reasoning trail
 stays intact.
 
-Last updated: 2026-09-14
+Last updated: 2026-09-24 (Rev B — manufacturer data incorporated)
 
 ---
 
@@ -26,13 +26,17 @@ dominates, so **top speed is governed by drag area (CD0·S), not mass.** Weight 
 for acceleration, climb, and turn — not Vmax. Optimising "speed per weight" would send
 you chasing grams when you should be cleaning up the duct.
 
-**Fan pressure rise.** `Δp_fan ≈ ½ρVe² ≈ 2,600 Pa` at Ve = 65 m/s.
+**Fan pressure rise.** `Δp_fan ≈ ½ρVe² ≈ 3,445 Pa` at Ve = 75 m/s (manufacturer
+data, 6S, Tenshock EZ 1540-9). Earlier figure of 2,600 Pa used an estimated
+Ve = 65 m/s and is superseded.
 
 Against 101,325 Pa ambient that is a pressure ratio of about **1.026**. A turbofan runs
 30–40. Everything about ducting an EDF follows from this number.
 
-**Duct losses.** `Δp_loss = K · q_duct`. At 45 m/s duct velocity, q_duct ≈ 1,240 Pa,
-so a single bend at K = 0.3 costs ~370 Pa — **14% of everything the fan produces.**
+**Duct losses.** `Δp_loss = K · q_duct`. The qualitative point stands — losses are a
+large fraction of a very small pressure rise, so duct quality dominates EDF performance
+in a way it never does on a turbine. The quantitative version is **pending Phase 1**:
+see the note under Figures of Merit.
 
 ---
 
@@ -40,14 +44,23 @@ so a single bend at K = 0.3 costs ~370 Pa — **14% of everything the fan produc
 
 | Metric | Definition | Threshold | Objective |
 |---|---|---|---|
-| Duct loss coefficient | K = Δp_loss / q_duct | ≤ 0.35 | ≤ 0.15 |
-| Fraction of fan rise lost | Δp_loss / Δp_fan | ≤ 15% | ≤ 7% |
+| Duct loss coefficient | K = Δp_loss / q_duct | *pending* | *pending* |
+| Fraction of fan rise lost | Δp_loss / Δp_fan | *pending* | *pending* |
 | Installed thrust ratio | T_installed / T_bare | ≥ 88% | ≥ 93% |
 | Pressure recovery (reference only) | PR = P̄t2 / Pt0 | ≥ 0.995 | ≥ 0.998 |
 | Inlet distortion | DC60 | < 0.30 | < 0.15 |
 
 Lead with **installed thrust ratio** in conversation — easiest to measure, hardest to
-argue with, easiest to explain in an interview.
+argue with, easiest to explain in an interview. It is also the only one of these that
+needs no assumed quantities, which is why it is the one to quote until Phase 1 is done.
+
+> **Thresholds pending Phase 1.** With Ve = 75 m/s, duct velocity approaches exhaust
+> velocity, so q_duct and Δp_fan converge and the first two metrics collapse onto
+> roughly the same number. The originally written pairs (K ≤ 0.35 with ≤ 15% of fan
+> rise) are therefore internally inconsistent — K ≤ 0.35 would imply losing ~35% of
+> fan rise, not 15%. Rather than patch this with another estimate, **derive both from
+> measured mass flow in Phase 1**: ṁ gives true duct velocity, which sets q_duct
+> properly, and Δp_fan follows from measured Ve. Set the thresholds then.
 
 Specific excess power `Ps = (T − D)V / W` is the professionally correct performance
 metric (energy-manoeuvrability theory, John Boyd). Use it rather than invented terms
@@ -124,7 +137,7 @@ Set a hard cutoff (~1 m/s) and document the rule.
 space gives a flat trace; recirculation shows as slow monotonic thrust decay as the fan
 ingests its own wake. Converts "is this space big enough" into a number.
 
-**Battery sag.** A 6S pack sags under 100 A and drops further as it discharges, so
+**Battery sag.** A 6S pack sags under load (~61 A here) and drops further as it discharges, so
 ascending and descending throttle sweeps run at different voltages and produce apparent
 hysteresis that is really state of charge. Fix: log voltage at every point and plot
 against **electrical power**, not throttle percentage.
@@ -138,11 +151,13 @@ ring's area centroid. Equal radial spacing over-weights the hub and biases the a
 
 | Item | Decision | Reasoning |
 |---|---|---|
-| Fan | Schübeler DS-30-AXI HDS 70 mm | CFD-optimised blading, machined alloy stator, FEA-stiffened rotor. A rotor that flexes under load changes tip clearance with throttle, which corrupts the measurement being made. |
+| Fan | Schübeler DS-30-AXI HDS 70 mm, carbon shroud, brackets included | CFD-optimised blading, FEA-stiffened rotor. A rotor that flexes under load changes tip clearance with throttle, which corrupts the measurement being made. ~$220. Takes a 28 mm motor (motor OD, not fan size). Side brackets on the shroud are the mounting interface — design the fan bracket around them rather than drilling carbon. |
+| Motor | **Tenshock EZ 1540-9** (6S) | Schübeler's own published curves use HET 2W20 (4S), HET 2W23 (5S), Tenshock EZ 1540-9 (6S). Sold separately. |
+| ESC | **YGE 90HV** preferred over Hobbywing Platinum 120A V4 | Schübeler's published curves were taken with a YGE 90HV. Matching it removes the ESC as a variable when comparing measurements to their data. 90 A is right-sized for a ~61 A draw. |
 | Load cell | SparkFun TAL220, 10 kg | Published datasheet: hysteresis ±0.05% FS, repeatability ±0.03% FS, creep ±0.05% FS/3 min, temp coeff ±0.05% FS/10 °C, 1000 Ω bridge, M4 + M5 mounting. Those specs populate the uncertainty budget and are citable. |
-| Connector | **EC5**, not XT90 | EC5 ~120 A vs XT90 ~90 A. Continuous draw is ~100 A, so XT90 was marginally *under* the requirement. |
+| Connector | **EC5**, not XT90 | EC5 ~120 A vs XT90 ~90 A. Manufacturer data later showed 6S draw is ~61 A, not the ~100 A assumed, so EC5 is now generously over-rated rather than merely adequate. Harmless. |
 | Pressure sensor | Sensirion SDP810-500Pa | ±500 Pa, ~0.2% of reading. MPXV7002DP is ±2 kPa at 2.5% FS = ±50 Pa error against a 150–400 Pa signal. |
-| Current sensing | INA226 + **external 100 A / 75 mV shunt** (0.75 mΩ) | Stock modules max at 20 A. 75 mV at 100 A sits inside the ±81.92 mV range. **12S caution:** INA226 bus input is 36 V max — mount the shunt low-side for 12S. Alternative: ACS758LCB-100B Hall sensor, isolated, ~2% accuracy. |
+| Current sensing | INA226 + **external 75–100 A / 75 mV shunt** | Stock modules max at 20 A. Measured draw is ~61 A at 6S, so a 75 A shunt gives better resolution than 100 A; either works. **12S caution:** INA226 bus input is 36 V max — mount the shunt low-side for 12S. Alternative: ACS758LCB-100B Hall sensor, isolated, ~2% accuracy. |
 | Trainer | Freewing Yak-130 70 mm | Trainer airframe by design: thick less-swept wing, large tail, flaps. Description confirms gentle stall with wing-rocking warning and nose-down break. |
 | Batteries | Zeee 6S 3300 mAh EC5, qty 2 | 4000 mAh XT60 unavailable in time. 3300 is inside Freewing's 3000–4000 range. Bought EC5→XT60 adapters for the trainer. |
 | Receiver | RadioMaster ER8, qty 1 | ELRS **PWM** — most ELRS receivers are CRSF-only and will not drive servos directly. Cut from 2 to 1 at $50 each; spare only shortens downtime, doesn't prevent loss. |
@@ -226,8 +241,40 @@ Recording these because the reasoning matters more than the conclusion.
 | 2026-09 | Stock INA226 module | INA226 + external 100 A shunt | Onboard shunt maxes at 20 A |
 | 2026-09 | Horizontal load cell beam | Vertical beam | Bending-beam cells respond perpendicular to the long axis, not axially |
 | 2026-09 | ER8 ~$25–35 | ~$50 | Bad estimate; PWM receivers cost more than CRSF |
-| 2026-09 | XT90 connectors | EC5 | XT90 ~90 A is under the ~100 A continuous draw |
+| 2026-09 | XT90 connectors | EC5 | XT90 ~90 A is under the then-assumed ~100 A draw |
+| 2026-09-24 | "Schübeler DSM inrunner" motor | **Tenshock EZ 1540-9** | **I invented the DSM part name** — pattern-matched from the brand and stated it as fact without checking. Schübeler's own test curves name HET and Tenshock motors. Treat any specific part number not visibly looked up as unverified. |
+| 2026-09-24 | Ve = 65 m/s (estimated) | **75 m/s** (manufacturer, 6S) | Δp_fan 2,600 → 3,445 Pa; predicted Vmax ~41 → ~50 m/s baseline, ~57 m/s cleaned up |
+| 2026-09-24 | ~100 A continuous draw (estimated) | **~61 A** at 6S, 21.3 V | Affects shunt sizing and ESC headroom, nothing already purchased |
+| 2026-09-24 | K and fan-rise-lost thresholds | Marked *pending Phase 1* | With Ve = 75 m/s the two metrics collapse together; the written pair was internally inconsistent. Derive from measured ṁ. |
+| 2026-09-24 | Vendor claim "over 3.4 kg thrust" | **Not a 6S figure** | Published 6S curves top out at 2.14 kg. The 3.4 kg claim must be higher voltage with a different motor. Do not quote it as a 6S number. |
 | 2026-09 | "ER8G has gyro" | G = Glider (slim package); GV adds Vario | No stabilisation in either |
+
+---
+
+## 8b. Manufacturer baseline — Schübeler DS-30-AXI HDS
+
+Published curves, **intake per VDI 2041, corrected to ISA**. That is a standardised
+bellmouth with density correction — i.e. **exactly the Phase 1 test condition.**
+
+This turns Phase 1 from "establish my own denominator" into **validation of the whole
+measurement chain against an independent reference.** If the stand reads ~21 N where
+Schübeler says ~21 N, the load cell, calibration, bellmouth and density correction are
+all proven correct at once. If it reads 17 N, something is wrong and it gets found
+before Phase 2 rather than after.
+
+**6S, Tenshock EZ 1540-9, YGE 90HV, at 21.3 V:**
+
+| Quantity | Value |
+|---|---|
+| Thrust | ~21 N (2.14 kg) |
+| Current | ~61 A |
+| Exhaust velocity | ~75 m/s |
+| RPM | ~47,000 |
+| Total efficiency | ~61% |
+
+Log these as the dated prediction **before** taking any measurement.
+
+Other tested pairings: HET 2W20 (4S, ~18 N at 15.6 V), HET 2W23 (5S, ~20.5 N at 18.7 V).
 
 ---
 

@@ -96,11 +96,10 @@ Intent:
 - Watch PF-1 from LearnNX to study necessary tools for making CAD with variations. Begin test stand CAD. Some more packages arrived so look at everything that has come and verify with purchase tracker.
 
 Did:
-- what actually happened
-- raw files written: data/raw/...
+- Finished watching the video and organized CAD folder. Created first cad part file for baseplate of test stand. 
 
 Observed:
-- numbers, anomalies, things that looked wrong
+- YAK130 arrived as well as the Radiomaster controller, but can't find in package room so will call tomorrow morning to find.
 
 Notes / next:
-- open questions, what to try next time
+- Get packages. complete more cad.
