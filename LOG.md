@@ -103,3 +103,20 @@ Observed:
 
 Notes / next:
 - Get packages. complete more cad.
+
+## 2026-10-03
+
+Config: n/a
+Ambient: n/a
+
+Intent:
+- IM BACK. Today I will work on test stand cad, some packages also arrived finally so I need to mark it down in the purchase tracker. Also YAK-130, rc controller, reciever, and some batteries came so I'll charge the batteries later and try to test fly tomorrow. 
+
+Did:
+- Found Datasheet for TAL220, completed CAD for basestand, however need to do some measurements and planning for the rest of the stand.
+
+Observed:
+- numbers, anomalies, things that looked wrong
+
+Notes / next:
+- continue working on CAD
